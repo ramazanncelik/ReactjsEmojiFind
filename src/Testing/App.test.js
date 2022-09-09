@@ -8,17 +8,17 @@ describe("App Tests", () => {
     render(<App />);
   });
 
-  test('Başlk render edildi mi?', () => {
+  test('Has the title been rendered?', () => {
     const headerElement = screen.getByText("Emoji Search");
     expect(headerElement).toBeInTheDocument();
   });
 
-  test("Başlangıçtaki emoji listesi render edildi mi?", () => {
+  test("Is the initial emoji list rendered?", () => {
     const items = screen.getAllByText("Click to copy emoji");
     expect(items.length).toEqual(20);
   });
 
-  test("Filtreleme başarılı mı?", () => {
+  test("Is the filtering successful?", () => {
     const emoji = "Grinning";
     const input = screen.getByTitle("FilterInput");
     fireEvent.change(input, { target: { value: emoji } });
@@ -26,7 +26,7 @@ describe("App Tests", () => {
     expect(screen.getByText(emoji)).toBeInTheDocument();
   });
 
-  test("Emoji Kopyalama Başarılı mı?", () => {
+  test("Emoji Copy Successful?", () => {
     const click = screen.getAllByText("Click to copy emoji").at(0);
     const parent = click.parentElement;
     expect(parent.getAttribute("data-clipboard-text").length).toBeGreaterThan(
